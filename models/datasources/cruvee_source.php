@@ -101,7 +101,7 @@ class CruveeSource extends DataSource {
 
 /**
  * read
- * Handles list and get sub methods.
+ * Handles everything.
  *
  * @access public
  * @param object $model
