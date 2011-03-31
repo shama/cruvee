@@ -39,14 +39,17 @@ class VarietyTest extends CakeTestCase {
  * start
  */
 	public function start() {
-		/*$this->Ds =& ConnectionManager::create($this->ds_name, array(
-			'datasource' => 'cruvee.cruvee',
-			'app_id' => 'test',
-			'secrect' => '1234',
-		));*/
-		/*if ($this->Ds == null) {
+		if ($this->ds_name === false) {
+			$this->ds_name = 'cruvee_temp';
+			$this->Ds =& ConnectionManager::create($this->ds_name, array(
+				'datasource' => 'cruvee.cruvee',
+				'app_id' => 'test',
+				'secret' => '1234',
+				'cache' => false,
+			));
+		} else {
 			$this->Ds =& ConnectionManager::getDataSource($this->ds_name);
-		}*/
+		}
 		$this->Model =& new $this->name(array(
 			'alias' => $this->name,
 			'ds' => $this->ds_name,
@@ -57,12 +60,7 @@ class VarietyTest extends CakeTestCase {
  * testRead
  */
 	public function testRead() {
-		$res = $this->Model->find('all', array(
-			'conditions' => array(
-				//'commonality' => array('common', 'very_common'),
-			),
-		));
-		debug($res);
+
 	}
 
 

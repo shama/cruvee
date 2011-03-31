@@ -111,7 +111,6 @@ class CruveeSource extends DataSource {
  * TODO: Implement order by for varieties API.
  */
 	public function read(&$model, $data=array()) {
-		debug($data);
 		$method = (isset($model->method)) ? $model->method : Inflector::pluralize(Inflector::underscore($model->alias));
 		$uri = '/search/'.$method;
 		$options = array_merge(array(

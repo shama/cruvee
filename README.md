@@ -54,7 +54,7 @@ OR
 #### FIND AND LIMIT RESULTS (YES IT PAGINATES!)
 
     $winery = $this->Winery->find('all', array(
-        'limit' => 15,
+        'limit' => 15, // MAX IS 50
         'page' => 2,
     ));
 

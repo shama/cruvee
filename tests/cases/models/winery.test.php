@@ -32,20 +32,22 @@ class WineryTest extends CakeTestCase {
  * ds_name
  * @var string
  */
-	public $ds_name = 'cruvee';
+	public $ds_name = false;
 
 /**
  * start
  */
-	public function start() {
-		$this->Ds =& ConnectionManager::getDataSource($this->ds_name);
-		if (!$this->Ds) {
+public function start() {
+		if ($this->ds_name === false) {
+			$this->ds_name = 'cruvee_temp';
 			$this->Ds =& ConnectionManager::create($this->ds_name, array(
 				'datasource' => 'cruvee.cruvee',
 				'app_id' => 'test',
 				'secret' => '1234',
 				'cache' => false,
 			));
+		} else {
+			$this->Ds =& ConnectionManager::getDataSource($this->ds_name);
 		}
 		$this->Model =& new $this->name(array(
 			'alias' => $this->name,
@@ -103,6 +105,10 @@ END;
 				'limit' => 1,
 			));
 			$this->assertEqual($res, $expected);
+
+			// FIND ONE
+			$res = $this->Model->find('first');
+			$this->assertEqual($res, current($expected));
 
 		} catch (Exception $e) {
 			//debug($e->getMessage());
