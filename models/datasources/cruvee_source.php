@@ -26,6 +26,7 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  *
+ * @package cruvee
  * @author Kyle Robinson Young <kyle at dontkry.com>
  * @copyright 2011 Kyle Robinson Young
  * @license http://www.opensource.org/licenses/mit-license.php The MIT License

@@ -10,17 +10,17 @@ PHP5+, CakePHP 1.3+, Cruvee API Credentials
 
 ## Installing
 
-1. Extract the contents of this repo into *app/plugins/cruvee/* or use [git clone](http://www.kernel.org/pub/software/scm/git/docs/git-clone.html) or [git submodule](http://www.kernel.org/pub/software/scm/git/docs/git-submodule.html) in your plugins folder:
+Extract the contents of this repo into *app/plugins/cruvee/* or use [git clone](http://www.kernel.org/pub/software/scm/git/docs/git-clone.html) or [git submodule](http://www.kernel.org/pub/software/scm/git/docs/git-submodule.html) in your plugins folder:
 
-`git clone git://github.com/shama/cruvee.git cruvee
+	git clone git://github.com/shama/cruvee.git cruvee
 
-2. Copy the following lines into *app/config/database.php* and add your app_id and secret:
+Copy the following lines into *app/config/database.php* and add your app_id and secret:
 
-    var $cruvee = array(
-        'datasource' => 'cruvee.cruvee',
-        'app_id' => 'APP-ID-HERE',
-        'secret' => 'SECRET-HERE',
-    );
+	var $cruvee = array(
+		'datasource' => 'cruvee.cruvee',
+		'app_id' => 'APP-ID-HERE',
+		'secret' => 'SECRET-HERE',
+	);
 
 ## Usage
 
