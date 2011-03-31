@@ -111,6 +111,7 @@ class CruveeSource extends DataSource {
  * TODO: Implement order by for varieties API.
  */
 	public function read(&$model, $data=array()) {
+		debug($data);
 		$method = (isset($model->method)) ? $model->method : Inflector::pluralize(Inflector::underscore($model->alias));
 		$uri = '/search/'.$method;
 		$options = array_merge(array(
@@ -178,6 +179,11 @@ class CruveeSource extends DataSource {
 				'conditions' => array(
 					$field => current($data),
 				),
+			));
+		}
+		if (strtolower($query) == 'search') {
+			return $model->find('all', array(
+				'conditions' => array('q' => current($data)),
 			));
 		}
 		if (strtolower($query) == 'request') {

@@ -39,19 +39,17 @@ To grab all records use (Cruvee limits results to 50 per page):
 
     $winery = $this->Winery->find('first');
 
-#### FIND BY NAME
+#### SEARCHING
 
-    $winery = $this->Winery->findByName('Portalupi');
+    $winery = $this->Winery->search('Portalupi');
 
 OR
 
     $winery = $this->Winery->find('all', array(
         'conditions' => array(
-            'name' => 'Portalupi',
+            'q' => 'Portalupi',
         ),
     ));
-
-Each API has it restrictions on which fields you can find by. Please check the wine search API on Cruvee's docs: [http://developer.cruvee.com/search-api/](http://developer.cruvee.com/search-api/)
 
 #### FIND AND LIMIT RESULTS (YES IT PAGINATES!)
 

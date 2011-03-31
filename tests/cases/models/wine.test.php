@@ -60,7 +60,14 @@ class WineTest extends CakeTestCase {
 		try {
 
 			// FIND ALL
-			$res = $this->Model->find('all');
+			//$res = $this->Model->find('all');
+
+			// FIND ONE
+			//$res = $this->Model->find('first');
+
+			// FIND BY NAME
+			$res = $this->Model->search('Black Cloud');
+
 			debug($res);
 
 		} catch (Exception $e) {
