@@ -54,8 +54,13 @@ class CruveeSource extends DataSource {
 		 * true = use plugin cache
 		 * false = disable cache
 		 * 'cache-name' = cache config to use
+		 *
+		 * LEAVE OFF AS DEFAULT
+		 * Cruvee's Cross Data License Agreement requires
+		 * you to track usage data if you cache or persist data.
+		 * More Info: http://developer.cruvee.com/faq/
 		 */
-		'cache' => true,
+		'cache' => false,
 	);
 
 /**
