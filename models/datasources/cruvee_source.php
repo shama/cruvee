@@ -107,6 +107,8 @@ class CruveeSource extends DataSource {
  * @param object $model
  * @param array $data
  * @return array
+ *
+ * TODO: Implement order by for varieties API.
  */
 	public function read(&$model, $data=array()) {
 		$method = (isset($model->method)) ? $model->method : Inflector::pluralize(Inflector::underscore($model->alias));
@@ -116,6 +118,12 @@ class CruveeSource extends DataSource {
 		), (array)$data['conditions']);
 		if (empty($options['q'])) {
 			$uri .= '/all';
+		}
+		if (isset($data['limit'])) {
+			$options['rpp'] = $data['limit'];
+		}
+		if (isset($data['page'])) {
+			$options['page'] = $data['page'];
 		}
 		$params = '?';
 		foreach ($options as $key => $val) {
