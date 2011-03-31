@@ -136,6 +136,7 @@ class CruveeSource extends DataSource {
 		$hash = hash('md4', $this->url.$uri.$params);
 		if (($res = Cache::read($hash, $this->config['cache'])) === false || $this->config['cache'] === false) {
 			$res = $this->http->get($this->url.$uri, $params, $this->__getAuthArray($uri));
+			debug($res);
 			if (strpos($this->http->response['raw']['status-line'], '200') === false) {
 				throw new Exception(__d('cruvee', $this->http->response['raw']['status-line'], true));
 				return array();
@@ -154,7 +155,12 @@ class CruveeSource extends DataSource {
 		if ($data['fields'] == 'count') {
 			$res = array(array(array('count' => $res['total'])));
 		} else {
-			$res = Set::extract('/'.$model->alias, array($model->alias => $res['results']));
+			if ($method == 'social') {
+				$res = $res['items'];
+			} else {
+				$res = $res['results'];
+			}
+			$res = Set::extract('/'.$model->alias, array($model->alias => $res));
 		}
 		return $res;
 	}

@@ -1,6 +1,7 @@
 # CruveeCake: A Cruvee API Wrapper for CakePHP
 
 Cruvee is an open-source approach to quality wine data provided by a flexible and powerful family of APIs.
+
 [http://developer.cruvee.com/](http://developer.cruvee.com/)
 
 ## Requirements
@@ -13,7 +14,7 @@ PHP5+, CakePHP 1.3+, Cruvee API Credentials
 
 `git clone git://github.com/shama/cruvee.git cruvee
 
-3. Copy the following lines into *app/config/database.php* and add your subdomain and api token:
+2. Copy the following lines into *app/config/database.php* and add your app_id and secret:
 
     var $cruvee = array(
         'datasource' => 'cruvee.cruvee',
@@ -100,13 +101,14 @@ If you found this release useful please let the author know! Follow on [Twitter]
 
 ## Roadmap and Known Issues
 
-* Finish building/testing brand, location, region and variety 
-* Implement Social API
+* Finish building/testing brand, location, region and variety
+* Add access to Social API totals 
 
 ## Changelog
 
 ### 0.1
 
+* Implemented Social API
 * Added models for each api call
 * Built cruvee datasource to handle most of the API
 * Setup basic plugin
