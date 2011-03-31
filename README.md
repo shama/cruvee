@@ -102,7 +102,8 @@ If you found this release useful please let the author know! Follow on [Twitter]
 ## Roadmap and Known Issues
 
 * Finish building/testing brand, location, region and variety
-* Add access to Social API totals 
+* Add access to Social API totals
+* Verieties API doesn't return JSON results yet 
 
 ## Changelog
 

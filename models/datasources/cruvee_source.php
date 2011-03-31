@@ -136,7 +136,6 @@ class CruveeSource extends DataSource {
 		$hash = hash('md4', $this->url.$uri.$params);
 		if (($res = Cache::read($hash, $this->config['cache'])) === false || $this->config['cache'] === false) {
 			$res = $this->http->get($this->url.$uri, $params, $this->__getAuthArray($uri));
-			debug($res);
 			if (strpos($this->http->response['raw']['status-line'], '200') === false) {
 				throw new Exception(__d('cruvee', $this->http->response['raw']['status-line'], true));
 				return array();
