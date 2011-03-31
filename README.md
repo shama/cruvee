@@ -100,6 +100,9 @@ If you found this release useful please let the author know! Follow on [Twitter]
 
 ## Roadmap and Known Issues
 
+* Finish building/testing brand, location, region and variety 
+* Implement Social API
+
 ## Changelog
 
 ### 0.1
