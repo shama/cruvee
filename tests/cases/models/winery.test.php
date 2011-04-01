@@ -37,7 +37,7 @@ class WineryTest extends CakeTestCase {
 /**
  * start
  */
-public function start() {
+	public function start() {
 		if ($this->ds_name === false) {
 			$this->ds_name = 'cruvee_temp';
 			$this->Ds =& ConnectionManager::create($this->ds_name, array(

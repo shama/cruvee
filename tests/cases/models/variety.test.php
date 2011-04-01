@@ -60,7 +60,7 @@ class VarietyTest extends CakeTestCase {
  * testRead
  */
 	public function testRead() {
-
+		// TODO: WILL TEST WHEN JSON IS AVAILABLE
 	}
 
 

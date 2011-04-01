@@ -61,7 +61,6 @@ class WineTest extends CakeTestCase {
  */
 	public function testRead() {
 		try {
-			// PREPARE FAKE RESPONSE
 			$fake = <<<END
 {"page":1,"rpp":1,"total":10782,"nextUrl":"http://apiv1.cruvee.com/search/wines/all?rpp=1&page=2","results":[{
     "JSONLink": "http://apiv1.cruvee.com/wines/124000200077801200600100.js",
@@ -137,12 +136,12 @@ END;
 			$this->Ds->http =& new MockHttpSocket();
 			$this->Ds->http->setReturnValue('get', $fake);
 			$this->Ds->http->response['raw']['status-line'] = 'HTTP/1.1 200 OK';
-			$expected = Set::reverse(json_decode($fake));
+			$expected = json_decode($fake, true);
 			$expected = Set::extract('/'.$this->Model->alias, array($this->Model->alias => $expected['results']));
 
 			// GET COUNT
 			$count = $this->Model->find('count');
-			$this->assertEqual($count, '10782');
+			$this->assertEqual($count, 10782);
 
 			// FIND ALL
 			$res = $this->Model->find('all', array(
@@ -153,9 +152,6 @@ END;
 			// FIND ONE
 			$res = $this->Model->find('first');
 			$this->assertEqual($res, current($expected));
-
-			// SEARCH
-			//$res = $this->Model->search('Portalupi');
 
 		} catch (Exception $e) {
 			//debug($e->getMessage());

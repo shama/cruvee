@@ -141,12 +141,16 @@ class CruveeSource extends DataSource {
 		$params = substr($params, 0, -1);
 		$hash = hash('md4', $this->url.$uri.$params);
 		if (($res = Cache::read($hash, $this->config['cache'])) === false || $this->config['cache'] === false) {
-			$res = $this->http->get($this->url.$uri, $params, $this->__getAuthArray($uri));
+			$json = $this->http->get($this->url.$uri, $params, $this->__getAuthArray($uri));
 			if (strpos($this->http->response['raw']['status-line'], '200') === false) {
 				throw new Exception(__d('cruvee', $this->http->response['raw']['status-line'], true));
 				return array();
 			}
-			$res = Set::reverse(json_decode($res));
+			$res = json_decode($json, true);
+			if (is_null($res) && !empty($json)) {
+				throw new Exception(__d('cruvee', 'Error decoding json, run json_last_error() after to see the error code.', true));
+				return array();
+			}
 			if ($this->config['cache'] !== false) {
 				if (isset($model->cache)) {
 					Cache::set($model->cache);
@@ -158,13 +162,21 @@ class CruveeSource extends DataSource {
 			return array();
 		}
 		if ($data['fields'] == 'count') {
+			if (empty($res['total'])) {
+				$res['total'] = 0;
+			}
 			$res = array(array(array('count' => $res['total'])));
 		} else {
+
 			if ($method == 'social') {
 				$res = $res['items'];
 			} else {
 				$res = $res['results'];
 			}
+			if (empty($res)) {
+				return array();
+			}
+
 			$res = Set::extract('/'.$model->alias, array($model->alias => $res));
 		}
 		return $res;
