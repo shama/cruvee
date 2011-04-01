@@ -91,7 +91,7 @@ class RegionTest extends CakeTestCase {
 END;
 		$this->Ds->http =& new MockHttpSocket();
 		$this->Ds->http->setReturnValue('get', $fake);
-		$this->Ds->http->response['raw']['status-line'] = 'HTTP/1.1 200 OK';
+		$this->Ds->http->response['status']['code'] = 200;
 		$expected = json_decode($fake, true);
 		$expected = Set::extract('/'.$this->Model->alias, array($this->Model->alias => $expected['results']));
 

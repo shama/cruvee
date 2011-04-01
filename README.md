@@ -101,14 +101,14 @@ If you found this release useful please let the author know! Follow on [Twitter]
 
 ## Roadmap and Known Issues
 
-* Add access to Social API totals
 * Social test case fails to decode json (live works though)
-* Varieties API doesn't return JSON results yet 
+* Varieties API doesn't return JSON results yet
 
 ## Changelog
 
 ### 0.1
 
+* Added access to Social API totals
 * Implemented Social API
 * Added models for each api call
 * Built cruvee datasource to handle most of the API
