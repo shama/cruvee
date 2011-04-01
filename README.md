@@ -101,8 +101,8 @@ If you found this release useful please let the author know! Follow on [Twitter]
 
 ## Roadmap and Known Issues
 
-* Finish building/testing brand, location, region and variety
 * Add access to Social API totals
+* Social test case fails to decode json (live works though)
 * Varieties API doesn't return JSON results yet 
 
 ## Changelog
