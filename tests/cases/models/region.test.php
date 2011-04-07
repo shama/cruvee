@@ -32,7 +32,7 @@ class RegionTest extends CakeTestCase {
  * ds_name
  * @var string
  */
-	public $ds_name = 'cruvee';
+	public $ds_name = false;
 
 /**
  * start

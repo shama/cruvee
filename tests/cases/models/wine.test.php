@@ -33,7 +33,7 @@ class WineTest extends CakeTestCase {
  * Set to live DS name for live testing.
  * @var string
  */
-	public $ds_name = false; // cruvee
+	public $ds_name = false;
 
 /**
  * start

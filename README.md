@@ -102,12 +102,12 @@ If you found this release useful please let the author know! Follow on [Twitter]
 ## Roadmap and Known Issues
 
 * Social test case fails to decode json (live works though)
-* Varieties API doesn't return JSON results yet
 
 ## Changelog
 
 ### 0.1
 
+* Finished varieties api
 * Added access to Social API totals
 * Implemented Social API
 * Added models for each api call

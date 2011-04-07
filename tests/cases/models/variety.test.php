@@ -33,7 +33,7 @@ class VarietyTest extends CakeTestCase {
  * ds_name
  * @var string
  */
-	public $ds_name = 'cruvee'; // cruvee_temp
+	public $ds_name = false;
 
 /**
  * start
@@ -60,7 +60,38 @@ class VarietyTest extends CakeTestCase {
  * testRead
  */
 	public function testRead() {
-		// TODO: WILL TEST WHEN JSON IS AVAILABLE
+		$fake = <<<END
+{"page":1,"rpp":1,"total":304,"nextUrl":"http://apiv1.cruvee.com/search/varieties/all?rpp=1&page=2","results":[{
+    "JSONLink": "http://apiv1.cruvee.com/varieties/00122.js",
+    "commonality": "COMMON",
+    "defaultName": "Aglianico",
+    "entityType": "VARIETY",
+    "names": [
+    ],
+    "wineType": "RED",
+    "ynId": "urn:ynvid:00122"
+}]}
+END;
+
+		$this->Ds->http =& new MockHttpSocket();
+		$this->Ds->http->setReturnValue('get', $fake);
+		$this->Ds->http->response['status']['code'] = 200;
+		$expected = Set::reverse(json_decode($fake));
+		$expected = Set::extract('/'.$this->Model->alias, array($this->Model->alias => $expected['results']));
+
+		// GET COUNT
+		$count = $this->Model->find('count');
+		$this->assertEqual($count, 304);
+
+		// FIND ALL
+		$res = $this->Model->find('all', array(
+			'limit' => 1,
+		));
+		$this->assertEqual($res, $expected);
+
+		// FIND ONE
+		$res = $this->Model->find('first');
+		$this->assertEqual($res, current($expected));
 	}
 
 
